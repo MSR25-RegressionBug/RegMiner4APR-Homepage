@@ -248,7 +248,7 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 		$rootScope.$on('previous_bug', previousBug);
 	})
 	.controller('mainController', function($scope, $rootScope, $location, $window, $rootScope, $http, $uibModal) {
-		$scope.sortType     = ['metrics.chunks', 'metrics.linesAdd', 'repairActions.length']; // set the default sort type
+		$scope.sortType     = ['metrics.chunks', 'metrics.sizeInLines', 'repairActions.length']; // set the default sort type
 		$scope.sortReverse  = false;
 		$scope.match  = "all";
 		$scope.filter   = {};
