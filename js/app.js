@@ -35,6 +35,20 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 						matching: 'lines'
 					});
 					diff2htmlUi.highlightCode($(elem));
+
+					// Apply tooltip after drawing the content
+					$(elem).find('.d2h-file-name').each(function() {
+						// Add the tooltip text for each file name element
+						$(this).attr('uib-tooltip', 'File: ' + $(this).text());
+						$(this).attr('tooltip-placement', 'top'); // or 'right', 'bottom', 'left'
+					});
+	
+					// Manually compile the element to enable AngularJS tooltips
+					scope.$applyAsync(function() {
+						angular.element(elem).injector().invoke(function($compile) {
+							$compile(elem.contents())(scope);
+						});
+					});
 				});
 			}
 		}
@@ -50,6 +64,20 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 						matching: 'lines'
 					});
 					diff2htmlUi.highlightCode($(elem));
+
+					// Apply tooltip after drawing the content
+					$(elem).find('.d2h-file-name').each(function() {
+						// Add the tooltip text for each file name element
+						$(this).attr('uib-tooltip', 'File: ' + $(this).text());
+						$(this).attr('tooltip-placement', 'top'); // or 'right', 'bottom', 'left'
+					});
+	
+					// Manually compile the element to enable AngularJS tooltips
+					scope.$applyAsync(function() {
+						angular.element(elem).injector().invoke(function($compile) {
+							$compile(elem.contents())(scope);
+						});
+					});
 				});
 			}
 		}
