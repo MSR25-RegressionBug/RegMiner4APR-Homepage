@@ -171,16 +171,16 @@ h4 a:hover {
     text-decoration: underline;
 }
 
-/* Increase font size and make tooltip more spacious */
+/* Adjust tooltip size dynamically based on content */
 .tooltip-inner {
-    font-size: 16px; /* Adjust font size */
-    padding: 10px 15px; /* Add padding to make tooltip larger */
-    max-width: 300px; /* Set max width for tooltip content */
-    white-space: pre-wrap; /* Allow line breaks in long content */
-    word-wrap: break-word; /* Ensure long words break into multiple lines */
+    font-size: 11px;  /* Increase font size */
+    padding: 4px 6px;  /* Add padding to make tooltip larger */
+    max-width: none;  /* Allow the tooltip to grow to fit its content */
+    white-space: pre-wrap;  /* Allow line breaks in long content */
+    word-wrap: break-word;  /* Ensure long words break into multiple lines */
 }
 
-/* Tooltip arrow (optional) adjustments */
+/* Adjust tooltip arrow to align with the content */
 .tooltip-arrow {
-    border-width: 10px; /* Increase size of the tooltip arrow */
+    border-width: 6px;  /* Default border width */
 }
