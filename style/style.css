@@ -146,39 +146,19 @@ table tr:hover {
 }
 
 /* ======================================= */
-/* Increase the size of the modal */
-.modal-dialog {
-    max-width: 80%; /* Increase the width to 80% of the screen */
-    width: 80%; /* You can adjust this as needed */
-    height: 80%; /* Increase the height to 80% of the screen */
-    max-height: 80%; /* Ensure it does not go outside the screen */
-    margin: 20px auto; /* Center the modal */
-}
-
-/* Adjust modal body if necessary */
-.modal-body {
-    height: calc(100% - 100px); /* Subtract the height of the header and footer */
-    overflow-y: auto; /* Ensure content is scrollable if it overflows */
-    padding: 20px; /* Add some padding inside the body */
-}
-
 /* Fixed-size container for diff sections */
 .diff-container {
-    display: flex;
-    gap: 10px;
-    max-width: 100%; /* Keep it within the modal boundaries */
-    margin-top: 15px;
+    display: flex;         /* Enables flexbox layout for side-by-side sections */
+    gap: 10px;             /* Adds space between the two sections */
+    width: 100%;           /* Full width of the container */
+    max-width: 100%;       /* Prevents overflow beyond the parent */
 }
 
-/* Fixed-size individual diff sections */
 .diff-section {
-    flex: 1; /* Ensures both sections take up equal space */
-    border: 1px solid #ddd; /* Adds a border around each section */
-    padding: 10px;
-    box-sizing: border-box;
-    max-height: 400px; /* Fixed height for each diff section */
-    overflow-y: auto; /* Enables vertical scrolling if content exceeds max height */
-    background-color: #f9f9f9; /* Light background for visibility */
+    flex: 1;               /* Allows each section to take up equal space */
+    overflow: auto;        /* Adds scrollbars if content overflows */
+    /* border: 1px solid #ccc; /* Optional: adds a border to visually separate the sections */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 /* Style for links */

@@ -53,8 +53,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<h2>RegMiner4APR is showing {{filteredBug.length}} Bugs 
-						<a href="http://program-repair.org/defects4j-dissection/charts.html"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>
-						<a href="https://github.com/program-repair/defects4j-dissection">
+						<a href="https://github.com/brojackvn/RegMiner4APR-Framework">
 							<i class="fa fa-github" aria-hidden="true"></i></a></h2>
 				</div>
 				<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -262,6 +261,12 @@
 			<a ng-click="$ctrl.previousBug()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous Bug</a> | <a ng-click="$ctrl.nextBug()">Next Bug <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 		</div>
 		<div class="modal-body" id="modal-body">
+			<section>
+				<h3>Regression Bug</h3>
+				<section class="filters">
+					<span class="filter">{{$ctrl.bug.bugType}} </span>
+				</section>
+			</section>
 			<section>
 				<h3>Repair Operators</h3>
 				<section class="filters">

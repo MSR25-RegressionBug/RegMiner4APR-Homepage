@@ -30,7 +30,7 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 				scope.$watch("$ctrl.bug.bicdiff", function () {
 					var diff2htmlUi = new Diff2HtmlUI({ diff: scope["$ctrl"].bug.bicdiff });
 					diff2htmlUi.draw($(elem), {
-						inputFormat: 'java',
+						// inputFormat: 'java',
 						drawFileList: true,
 						matching: 'lines'
 					});
@@ -101,25 +101,23 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 				return repairNames[key].name;
 			}
 			return null;
-		};
-
-		$ctrl.testURL = function (test) {
-			var url = "https://github.com/Spirals-Team/defects4j-repair/blob/";
-			url += $ctrl.bug.project + "" + $ctrl.bug.bugId;
-			if ($ctrl.bug.diff.indexOf("a/src/main/") != -1) {
-				url += "/src/test/java/"
-			} else if ($ctrl.bug.diff.indexOf("a/src/java/") != -1) {
-				url += "/src/test/"
-			} else if ($ctrl.bug.diff.indexOf("a/src/") != -1) {
-				url += "/test/"
-			} else {
-				url += "/tests/"
-			}
-			url += test.className.replace(/\./g, "/").trim();
-			url += ".java"
-
-			return url;
 		}
+		// $ctrl.testURL = function (test) {
+		// 	var url = "https://github.com/Spirals-Team/defects4j-repair/blob/";
+		// 	url += $ctrl.bug.project + "" + $ctrl.bug.bugId;
+		// 	if ($ctrl.bug.diff.indexOf("a/src/main/") != -1) {
+		// 		url += "/src/test/java/"
+		// 	} else if ($ctrl.bug.diff.indexOf("a/src/java/") != -1) {
+		// 		url += "/src/test/"
+		// 	} else if ($ctrl.bug.diff.indexOf("a/src/") != -1) {
+		// 		url += "/test/"
+		// 	} else {
+		// 		url += "/tests/"
+		// 	}
+		// 	url += test.className.replace(/\./g, "/").trim();
+		// 	url += ".java"
+		// 	return url;
+		// }
 	})
 	.controller('bugController', function($scope, $location, $rootScope, $routeParams, $uibModal) {
 		var $ctrl = $scope;
@@ -250,7 +248,7 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 		$rootScope.$on('previous_bug', previousBug);
 	})
 	.controller('mainController', function($scope, $rootScope, $location, $window, $rootScope, $http, $uibModal) {
-		$scope.sortType     = ['chunks']; // set the default sort type
+		$scope.sortType     = ['metrics.chunks', 'metrics.linesAdd', 'repairActions.length']; // set the default sort type
 		$scope.sortReverse  = false;
 		$scope.match  = "all";
 		$scope.filter   = {};
@@ -308,6 +306,7 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 		};
 
 		$scope.sort = function (sort) {
+			console.log(sort)
 			if (sort == $scope.sortType || (sort[0] == 'project' && $scope.sortType[0] == 'project')) {
 				$scope.sortReverse = !$scope.sortReverse; 
 			} else {
@@ -325,6 +324,7 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 			for(var i = 0; i < $scope.bugs.length; i++) {
 				if ($scope.bugs[i].repairOperators.indexOf(key) !== -1
 					|| $scope.bugs[i].repairTools.indexOf(key) !== -1
+					|| $scope.bugs[i].bugType.indexOf(key) !== -1
 					|| $scope.bugs[i][key] === true) {
 					count++;
 				}
@@ -358,6 +358,7 @@ angular.module('defects4j-website', ['ngRoute', 'ui.bootstrap', 'anguFixedHeader
 				if ($scope.filter[i] === true) {
 					if (bug[i] === true 
 						|| bug.repairOperators.indexOf(i) !== -1
+						|| bug.bugType.indexOf(i) !== -1
 						|| bug.repairTools.indexOf(i) !== -1) {
 						if ($scope.match=="any") {
 							return true;
